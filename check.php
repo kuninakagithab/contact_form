@@ -6,15 +6,15 @@ $content = $_POST['content'];
 
 // 入力内容のチェック　空かどうか
 if ($nickname == '') {
-    $nickname_result = 'ニックネームを入力してね。';
+    $nickname_result = 'ニックネームを入力してください。';
 } else {
-    $nickname_result = 'よくぞ参られた、' . $nickname .'殿';
+    $nickname_result = 'ようこそ、' . $nickname .'様';
 }
 
 if ($email == '') {
     $email_result = 'メールアドレスが入力されていません。';
 } else {
-    $email_result = 'メールアドレス：' . $email.'で間違いないな';
+    $email_result = 'メールアドレス：' . $email;
 }
 
 if ($content == '') {
@@ -48,5 +48,20 @@ if ($content == '') {
     <p><?php echo $nickname_result; ?></p>
     <p><?php echo $email_result; ?></p>
     <p><?php echo $content_result; ?></p>
+
+    <form action="thanks.php" method="POST">
+      <input type="hidden" name="nickname" value ="<?=$nickname?>">
+      <input type="hidden" name="email" value ="<?=$email?>">
+      <input type="hidden" name="content" value ="<?=$content?>">
+      
+      <button type="button" onclick="history.back()">戻る</button>
+      <?php if($nickname !== '' &&  $email !== '' &&  $content !== '') : ?>
+        <input type="submit" value="OK">
+      <?php endif ; ?>
+    </form>
+    
+    <!-- input type="hidden"は画面に表示されない -->
+    <!-- onclick="history.back()"  のイベント-->
+    <!-- action="thanks.php"飛ぶ先の指定 -->
 </body>
 </html>
