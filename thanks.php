@@ -16,6 +16,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     <meta charset="utf-8">
 </head>
 <body>
+
     <h1>お問い合わせありがとうございました！</h1>
     <p><?php echo h($nickname) ?></p>
     <p><?php echo h($email) ?></p>
