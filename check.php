@@ -57,9 +57,9 @@ if ($content == '') {
     <p><?php echo h($content_result); ?></p>
 
     <form action="thanks.php" method="POST">
-      <input type="hidden" name="nickname" value ="<?=$nickname?>">
-      <input type="hidden" name="email" value ="<?=$email?>">
-      <input type="hidden" name="content" value ="<?=$content?>">
+      <input type="hidden" name="nickname" value ="<?=h($nickname)?>">
+      <input type="hidden" name="email" value ="<?=h($email)?>">
+      <input type="hidden" name="content" value ="<?=h($content)?>">
       
       <!-- onclick="history.back()" javascliptのイベントと関数みたいな物 組み込み関数-->
       <button type="button" onclick="history.back()">戻る</button>
