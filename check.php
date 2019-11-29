@@ -1,5 +1,8 @@
 <?php
-
+// function.phpの呼び出し
+// require 獲得する once 一回
+require_once('function.php');
+// 中身を確認する物
 // echo "<pre>";
 // var_dump($_SERVER);
 // exit;
@@ -49,9 +52,9 @@ if ($content == '') {
 <body>
 <h1>入力内容確認</h1>
 <!-- 画面に表示 -->
-    <p><?php echo $nickname_result; ?></p>
-    <p><?php echo $email_result; ?></p>
-    <p><?php echo $content_result; ?></p>
+    <p><?php echo h($nickname_result); ?></p>
+    <p><?php echo h($email_result); ?></p>
+    <p><?php echo h($content_result); ?></p>
 
     <form action="thanks.php" method="POST">
       <input type="hidden" name="nickname" value ="<?=$nickname?>">
