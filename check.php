@@ -1,10 +1,26 @@
 <?php
-// 入力内容の取得
+
+// echo "<pre>";
+// var_dump($_SERVER);
+// exit;
+
+// echo "<pre>";
+// var_dump($_SERVER["HTTP_UPGRADE_INSECURE_REQUESTS"]);
+// exit;
+// POST送信ではなかったらindex.phpにリダイレクトする
+if($_SERVER["REQUEST_METHOD"] != "POST"){
+    header('Location: index.php');
+};
+
+// 入力内容の取得 変数名を自分でつけて、スーパーグローバル変数を利用して中身を取得
 $nickname = $_POST['nickname'];
 $email = $_POST['email'];
 $content = $_POST['content'];
+// POST POST送信されたデータが連想配列形式で保存されている
+// GET  GET送信されたデータが連想配列形式で保存されている
 
-// 入力内容のチェック　空かどうか
+// name属性
+// 入力内容のチェック 空かどうか
 if ($nickname == '') {
     $nickname_result = 'ニックネームを入力してください。';
 } else {
@@ -22,20 +38,8 @@ if ($content == '') {
 } else {
     $content_result = 'お問い合わせ内容：' . $content;
 }
-    // // ニックネーム
-    // $nickname = $_POST['nickname'];
-    // echo $nickname;
-    // echo '<br>';
-
-    // // メールアドレス
-    // $email = $_POST['email'];
-    // echo $email;
-    // echo '<br>';
-    // // お問い合わせ
-    // $content = $_POST['content'];
-    // echo $content;
-    // echo '<br>';
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -54,6 +58,7 @@ if ($content == '') {
       <input type="hidden" name="email" value ="<?=$email?>">
       <input type="hidden" name="content" value ="<?=$content?>">
       
+      <!-- onclick="history.back()" javascliptのイベントと関数みたいな物 組み込み関数-->
       <button type="button" onclick="history.back()">戻る</button>
       <?php if($nickname !== '' &&  $email !== '' &&  $content !== '') : ?>
         <input type="submit" value="OK">

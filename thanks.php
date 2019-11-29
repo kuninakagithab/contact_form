@@ -1,4 +1,9 @@
 <?php
+
+if($_SERVER["REQUEST_METHOD"] != "POST"){
+    header('Location: index.php');
+};
+
  $nickname = $_POST['nickname'];
  $email = $_POST['email'];
  $content = $_POST['content'];
