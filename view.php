@@ -1,6 +1,7 @@
 <?php
     require_once('function.php');
     require_once('dbconnect.php');
+    echo(require_once('dbconnect.php'));
 
     //SQLを実行
     // ①DBからデータを取得
